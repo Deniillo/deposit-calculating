@@ -30,3 +30,6 @@ gradle-app.setting
 *.iws
 *.iml
 *.ipr
+
+#strange bin files
+*.bin

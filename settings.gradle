@@ -13,3 +13,6 @@ plugins {
 
 rootProject.name = 'deposit-calculating'
 include('app')
+include 'deposit-calculating-ui'
+include 'deposit-calculating-core'
+
