@@ -33,3 +33,5 @@ gradle-app.setting
 
 #strange bin files
 *.bin
+/deposit-calculating-ui/build/
+/deposit-calculating-core/build/
