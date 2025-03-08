@@ -19,8 +19,8 @@
 
 1. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/ваш-репозиторий.git
-   cd ваш-репозиторий
+   git clone https://github.com/Deniillo/deposit-calculating.git
+   cd deposit-calculating
    ```
 2. Запустите приложение с помощью Docker Compose:
     ```bash
