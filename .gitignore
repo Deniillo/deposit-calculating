@@ -37,4 +37,4 @@ gradle-app.setting
 /deposit-calculating-core/build/
 
 # add gradke-wrapper.jar for CI/CD
-!gradle
+!gradle/wrapper/gradle-wrapper.jar
