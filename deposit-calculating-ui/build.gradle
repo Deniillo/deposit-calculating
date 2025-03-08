@@ -1,19 +1,34 @@
 plugins {
-    id 'java'
+	id 'java'
+	id 'com.github.johnrengelman.shadow' version '8.1.1'  // Плагин для создания fat JAR
 }
 
 group = 'lekton.deniill'
 version = 'unspecified'
 
 repositories {
-    mavenCentral()
+	mavenCentral()
 }
 
+jar {
+	manifest {
+		attributes 'Main-Class': 'lekton.deniill.Main'
+	}
+}
+
+shadowJar {
+	archiveClassifier.set('')  // Убирает суффикс "-all" из имени JAR-файла
+	mergeServiceFiles()        // Объединяет service files (если есть)
+}
+
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+	implementation(project(":deposit-calculating-core"))
+	implementation("info.picocli:picocli:4.7.5")
+	testImplementation platform('org.junit:junit-bom:5.10.0')
+	testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
 test {
-    useJUnitPlatform()
+	useJUnitPlatform()
 }
