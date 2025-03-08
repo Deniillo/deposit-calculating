@@ -1,0 +1,7 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    stdin_open: true  # Открываем STDIN для интерактивного ввода
+    tty: true         # Подключаем TTY (консоль)
