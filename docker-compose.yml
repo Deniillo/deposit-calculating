@@ -5,3 +5,5 @@ services:
       dockerfile: Dockerfile
     stdin_open: true  # Открываем STDIN для интерактивного ввода
     tty: true         # Подключаем TTY (консоль)
+    volumes:
+      - .:/app # монтируем текущую папку со всем кодом в /app у контейнера
