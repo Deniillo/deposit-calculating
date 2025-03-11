@@ -1,5 +1,7 @@
 package lekton.deniill.services;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.security.InvalidParameterException;
 import lekton.deniill.models.DepositModel;
 
@@ -9,12 +11,18 @@ public class DepositServiceImpl implements DepositService {
     public int calculatePayback(DepositModel depositModel) {
         checkDepositParams(depositModel);
 
-        double targetAmount = depositModel.getAmount() * depositModel.getMultiplier();
-        double currentAmount = depositModel.getAmount();
+        BigDecimal targetAmount = depositModel.getAmount()
+                .multiply(depositModel.getMultiplier());
+        BigDecimal currentAmount = depositModel.getAmount();
+        BigDecimal percentage = BigDecimal.ONE.add(
+                depositModel.getPercentage()
+                        .divide(BigDecimal.valueOf(100), 10, RoundingMode.HALF_UP)
+        );
         int years = 0;
 
-        while (currentAmount < targetAmount) {
-            currentAmount *= (1 + depositModel.getPercentage() / 100);
+        while (currentAmount.compareTo(targetAmount) < 0) {
+            currentAmount = currentAmount
+                    .multiply(percentage);
             years++;
         }
 
@@ -22,16 +30,16 @@ public class DepositServiceImpl implements DepositService {
     }
 
     private void checkDepositParams(DepositModel depositModel) {
-        if (depositModel.getAmount() <= 0) {
+        if (depositModel.getAmount().compareTo(BigDecimal.ZERO) <= 0) {
             throw new InvalidParameterException("Сумма вклада должна быть положительным числом.");
         }
 
-        if (depositModel.getPercentage() <= 0) {
+        if (depositModel.getPercentage().compareTo(BigDecimal.ZERO) <= 0) {
             throw new InvalidParameterException(
                     "Процентная ставка должна быть положительным числом.");
         }
 
-        if (depositModel.getMultiplier() <= 1) {
+        if (depositModel.getMultiplier().compareTo(BigDecimal.ONE) <= 0) {
             throw new InvalidParameterException("Множитель должен быть больше 1.");
         }
     }

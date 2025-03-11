@@ -1,5 +1,6 @@
 package lekton.deniill.handlers;
 
+import java.math.BigDecimal;
 import java.util.Map;
 import lekton.deniill.exceptions.InvalidDepositParamException;
 import lekton.deniill.exceptions.InvalidFileFormatException;
@@ -33,19 +34,19 @@ public class DepositActions implements Runnable {
                             description =
                                     "Сумма вашего вклада. Необходимо ввести любое дробное число без"
                                             + " букв")
-                    Double sum,
+                    BigDecimal sum,
             @CommandLine.Option(
                             names = {"-p", "--percentage"},
                             description =
                                     "Процентная ставка вашего вклада. Необходимо ввести любое"
                                             + " дробное число без букв")
-                    Double percentage,
+                    BigDecimal percentage,
             @CommandLine.Option(
                             names = {"-m", "--multiplier"},
                             description =
                                     "Во сколько раз вклад должен увеличиться без внесения"
                                             + " дополнительных сумм и снимания денег со счета")
-                    Double multiplier,
+                    BigDecimal multiplier,
             @CommandLine.Option(
                             names = {"-f", "--file"},
                             description =
@@ -56,9 +57,9 @@ public class DepositActions implements Runnable {
                 ParamsProvider paramsProvider = new FileParamsReader(filePath);
                 Map<String, Double> params = paramsProvider.getParams();
 
-                sum = params.get("sum");
-                percentage = params.get("percentage");
-                multiplier = params.get("multiplier");
+                sum = BigDecimal.valueOf(params.get("sum"));
+                percentage = BigDecimal.valueOf(params.get("percentage"));
+                multiplier = BigDecimal.valueOf(params.get("multiplier"));
             }
 
             if (sum == null || percentage == null || multiplier == null) {

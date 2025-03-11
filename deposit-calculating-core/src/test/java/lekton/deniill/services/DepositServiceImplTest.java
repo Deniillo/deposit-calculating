@@ -3,6 +3,7 @@ package lekton.deniill.services;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
+import java.math.BigDecimal;
 import java.security.InvalidParameterException;
 import lekton.deniill.models.DepositModel;
 import org.junit.jupiter.api.Test;
@@ -20,9 +21,9 @@ class DepositServiceImplTest {
 
         DepositModel depositModel =
                 DepositModel.builder()
-                        .amount(amount)
-                        .percentage(percentage)
-                        .multiplier(multiplier)
+                        .amount(new BigDecimal(amount))
+                        .percentage(new BigDecimal(percentage))
+                        .multiplier(new BigDecimal(multiplier))
                         .build();
 
         // Act
@@ -43,9 +44,9 @@ class DepositServiceImplTest {
 
         DepositModel depositModel =
                 DepositModel.builder()
-                        .amount(amount)
-                        .percentage(percentage)
-                        .multiplier(multiplier)
+                        .amount(new BigDecimal(amount))
+                        .percentage(new BigDecimal(percentage))
+                        .multiplier(new BigDecimal(multiplier))
                         .build();
 
         // Act & Assert
@@ -63,9 +64,9 @@ class DepositServiceImplTest {
 
         DepositModel depositModel =
                 DepositModel.builder()
-                        .amount(amount)
-                        .percentage(percentage)
-                        .multiplier(multiplier)
+                        .amount(new BigDecimal(amount))
+                        .percentage(new BigDecimal(percentage))
+                        .multiplier(new BigDecimal(multiplier))
                         .build();
 
         // Act & Assert
@@ -83,9 +84,9 @@ class DepositServiceImplTest {
 
         DepositModel depositModel =
                 DepositModel.builder()
-                        .amount(amount)
-                        .percentage(percentage)
-                        .multiplier(multiplier)
+                        .amount(new BigDecimal(amount))
+                        .percentage(new BigDecimal(percentage))
+                        .multiplier(new BigDecimal(multiplier))
                         .build();
 
         // Act & Assert
