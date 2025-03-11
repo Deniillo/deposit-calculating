@@ -38,3 +38,4 @@ gradle-app.setting
 
 # add gradke-wrapper.jar for CI/CD
 !gradle/wrapper/gradle-wrapper.jar
+!temp-files/deposit-calculating-ui.jar
