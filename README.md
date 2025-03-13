@@ -27,7 +27,7 @@
 2. Запустите приложение с помощью Docker Compose:
     ```bash
    docker-compose build --no-cache
-   docker-compose run --service-ports app
+   docker-compose run --remove-orphans --service-ports app
    ```
    После запуска вы увидите приветственное сообщение:
     ```
