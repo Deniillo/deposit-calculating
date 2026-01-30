@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Builder
-public class DepositModel {
+public class SuperModel {
     private BigDecimal amount;
     private BigDecimal percentage;
     private BigDecimal multiplier;
