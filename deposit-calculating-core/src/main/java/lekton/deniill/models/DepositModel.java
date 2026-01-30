@@ -1,3 +1,4 @@
+```
 package lekton.deniill.models;
 
 import java.math.BigDecimal;
@@ -13,3 +14,4 @@ public class DepositModel {
     private BigDecimal percentage;
     private BigDecimal multiplier;
 }
+```
